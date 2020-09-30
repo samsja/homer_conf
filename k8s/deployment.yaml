@@ -19,3 +19,12 @@ spec:
       - name: homer
         image: samsja/homer:0.1.1
         imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /www/assets/config.yml
+            subPath: config.yml
+            name: "config"
+
+      volumes:
+        - name: "config"
+          configMap:
+            name: "homer-config"
